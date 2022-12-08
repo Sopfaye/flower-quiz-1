@@ -123,6 +123,7 @@ function loadQuestion() {
    // close light box for first question
    if (currentQuestion == 0) {
       closeLightBox();
+      closeLightBox1();
    }
    
    // load the image
@@ -155,10 +156,6 @@ function markIt(ans) {
       message = "Incorrect :< Your score is " + score + "/" + questions.length;
    }// else
  
-  
-     
- 
- 
    // move to the next question
    currentQuestion++;
    if (currentQuestion >= questions.length && score == 10) {
@@ -177,20 +174,26 @@ function markIt(ans) {
    // show the lightbox
    document.getElementById("lightbox").style.display = "block";
    document.getElementById("message").innerHTML = message;
- 
-}  // markIt
+}
+  // markIt
 function closeLightBox() {
    document.getElementById("lightbox").style.display = "none";
 } // closeLightbox
+
+
 function hintBtn() {
+  let message1 = "";
   if (countHint < 1) {
   if (questions[currentQuestion].hint){
+  message1 = "Your hint is that " + questions[currentQuestion].hint;
+  document.getElementById("lightbox1").style.display = "block";
   document.getElementById("message1").innerHTML = message1;
-  message1.innerHTML = "Your hint is " + questions[currentQuestion].hint;
   countHint ++;
 }
 } else {
   alert("You already used your hint!");
 }
 }
- 
+function closeLightBox1() {
+   document.getElementById("lightbox1").style.display = "none";
+}
