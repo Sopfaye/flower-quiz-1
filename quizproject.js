@@ -142,6 +142,9 @@ function loadQuestion() {
 } // loadQuestion
 function markIt(ans) {
    let message = "";
+   if (currentQuestion > 9) {
+      return;
+    }
      if (ans == questions[currentQuestion].answer) {
      
       // add 1 to score
@@ -155,6 +158,11 @@ function markIt(ans) {
    } else {
       message = "Incorrect :< Your score is " + score + "/" + questions.length;
    }// else
+     
+ 
+  
+     
+ 
  
    // move to the next question
    currentQuestion++;
@@ -168,14 +176,13 @@ function markIt(ans) {
    }
      else {
       loadQuestion();
-   }
- 
+  
  
    // show the lightbox
    document.getElementById("lightbox").style.display = "block";
    document.getElementById("message").innerHTML = message;
 }
-  // markIt
+}// markIt
 function closeLightBox() {
    document.getElementById("lightbox").style.display = "none";
 } // closeLightbox
@@ -183,6 +190,9 @@ function closeLightBox() {
 
 function hintBtn() {
   let message1 = "";
+   if (currentQuestion > 9) {
+      return;
+    }
   if (countHint < 1) {
   if (questions[currentQuestion].hint){
   message1 = "Your hint is that " + questions[currentQuestion].hint;
@@ -194,6 +204,7 @@ function hintBtn() {
   alert("You already used your hint!");
 }
 }
+  
 function closeLightBox1() {
    document.getElementById("lightbox1").style.display = "none";
 }
